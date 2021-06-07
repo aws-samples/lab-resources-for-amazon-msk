@@ -39,9 +39,9 @@ su -c 'find /usr/lib/jvm/ -name "cacerts" -exec cp {} /tmp/kafka.client.truststo
 
 cd /tmp
 su -c "mkdir -p kafka" -s /bin/sh ec2-user
-su -c "aws s3 cp s3://reinvent2019-msk-liftandshift/producer.properties_msk /tmp/kafka" -l ec2-user
-su -c "aws s3 cp s3://reinvent2019-msk-liftandshift/consumer.properties /tmp/kafka" -l ec2-user
-su -c "aws s3 cp s3://reinvent2019-msk-liftandshift/schema-registry.properties /tmp/kafka" -l ec2-user
+su -c "aws s3 cp s3://aws-streaming-artifacts/msk-lab-resources/producer.properties_msk /tmp/kafka" -l ec2-user
+su -c "aws s3 cp s3://aws-streaming-artifacts/msk-lab-resources/consumer.properties /tmp/kafka" -l ec2-user
+su -c "aws s3 cp s3://aws-streaming-artifacts/msk-lab-resources/schema-registry.properties /tmp/kafka" -l ec2-user
 
 su -c "git -C /tmp/kafka clone https://github.com/aws-samples/sasl-scram-secrets-manager-client-for-msk.git" -l ec2-user
 su -c "cd /tmp/kafka/sasl-scram-secrets-manager-client-for-msk/ && mvn clean install -f pom.xml && cp target/SaslScramSecretsManagerClient-1.0-SNAPSHOT.jar /tmp/kafka" -l ec2-user
